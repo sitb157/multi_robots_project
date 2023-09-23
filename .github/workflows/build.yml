@@ -27,4 +27,4 @@ jobs:
         source /opt/ros/humble/setup.bash
         export CXX=clang++
         export CX=clang
-        colcon build --mixin lld --cmake-args -DNO_DOWNLOAD_MODELS=True
+        colcon build --cmake-args -DNO_DOWNLOAD_MODELS=True
