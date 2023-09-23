@@ -13,13 +13,10 @@ jobs:
     container:
       image: ${{ matrix.docker_image }}
     steps:
-    #- name: create-ws
-    #  run: |
-    #    mkdir -p rmf_demos_ws/src
     - name: build
       shell: bash
       run: |
-        cd simulation/
+        cd simulation_ws/
         source /opt/ros/humble/setup.bash
         export CXX=clang++
         export CX=clang
