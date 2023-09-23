@@ -13,10 +13,17 @@ jobs:
     container:
       image: ${{ matrix.docker_image }}
     steps:
+    - name: create-ws
+      run: |
+        mkdir -p build_ws/
+    - name: checkout # This will check out the current rmf_demos branch for build tests
+      uses: actions/checkout@v2
+      with:
+        path: simulation_ws/src/
     - name: build
       shell: bash
       run: |
-        cd ~/simulation_ws/
+        cd build_ws
         source /opt/ros/humble/setup.bash
         export CXX=clang++
         export CX=clang
