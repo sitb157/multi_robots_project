@@ -1,0 +1,14 @@
+name: ROS BUILD
+
+on:
+  push:
+    branches: [ "main", "devel" ]
+
+jobs:
+  build:
+    name: sitb157/rmf-simulation:humble
+    steps:
+    - name: colcon build
+      run: cd ./simulation
+      run: colcon build
+    
