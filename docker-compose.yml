@@ -1,15 +1,19 @@
 version: '3'
 services:
     simulation:
-        image: rmf_humble_simulation:latest
+        #image: rmf_humble_simulation:latest
         container_name: rmf_humble_simulation
         privileged: true
-        user: sitb157
         environment:
-            - "DISPLAY"
-            - "QT_X11_NO_MITSHM=1"
+            #- "DISPLAY"
+            #- "QT_X11_NO_MITSHM=1"
+            #
+            - DISPLAY=${IP}:0.0
         build:
             context: ./simulation_ws
+            args: 
+                - USER_NAME=${USER_NAME}
+        user: ${USER_NAME}
         volumes:
             - /tmp/.X11-unix:/tmp/.X11-unix:rw
             - $HOME/.Xauthority:/root/.Xauthority:rw
