@@ -1,0 +1,30 @@
+name: ROS BUILD
+
+on:
+  push:
+    branches: [ "main", "devel" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        docker_image: ['sitb157/rmf-simulation:humble']
+    container:
+      image: ${{ matrix.docker_image }}
+    steps:
+    - name: create-ws
+      run: |
+        mkdir -p rmf_demos_ws/src
+    - name: checkout # This will check out the current rmf_demos branch for build tests
+      uses: actions/checkout@v2
+      with:
+        path: simulation/src/
+    - name: build
+      shell: bash
+      run: |
+        cd rmf_demos_ws
+        source /opt/ros/humble/setup.bash
+        export CXX=clang++
+        export CX=clang
+        colcon build --mixin lld --cmake-args -DNO_DOWNLOAD_MODELS=True
