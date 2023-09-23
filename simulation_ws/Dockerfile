@@ -13,6 +13,21 @@ RUN apt-get update
 RUN apt-get install -y \
     vim
 
+# Install rmf
+RUN apt update && sudo apt install -y \
+    python3-pip \
+    curl \
+    python3-colcon-mixin \
+    ros-dev-tools
+RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+RUN wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+## These pip packages are only used by rmf_demos which are not released as binaries
+RUN python3 -m pip install flask-socketio fastapi uvicorn
+RUN rosdep update
+
+RUN colcon mixin update default
+RUN apt-get update && apt install -y ros-${ROS_DISTRO}-rmf-dev
+
 WORKDIR /root/simulation_ws/
 
 RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
