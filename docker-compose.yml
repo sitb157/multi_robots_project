@@ -1,7 +1,7 @@
 version: '3'
 services:
     simulation:
-        #image: rmf_humble_simulation:latest
+        image: sitb157/rmf:humble 
         container_name: rmf_humble_simulation
         privileged: true
         environment:
@@ -10,13 +10,13 @@ services:
             #
             - DISPLAY=${IP}:0.0
         build:
-            context: ./simulation_ws
+            context: ./rmf_ws
             args: 
                 - USER_NAME=${USER_NAME}
         user: ${USER_NAME}
         volumes:
             - /tmp/.X11-unix:/tmp/.X11-unix:rw
             - $HOME/.Xauthority:/root/.Xauthority:rw
-            - ./simulation_ws/src:/root/simulation_ws/src
+            - ./rmf_ws/src:/root/rmf_ws/src
         command: sleep infinity
 
