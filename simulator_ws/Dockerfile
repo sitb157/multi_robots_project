@@ -14,7 +14,7 @@ RUN apt-get install -y \
     vim
 
 # Install rmf
-RUN apt update && sudo apt install -y \
+RUN apt-get update && sudo apt install -y \
     python3-pip \
     curl \
     python3-colcon-mixin \

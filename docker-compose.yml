@@ -7,8 +7,8 @@ services:
       environment:
           #- "DISPLAY"
           #- "QT_X11_NO_MITSHM=1"
-          #
           - DISPLAY=${IP}:0.0
+      network_mode: host
       build:
           context: ./simulator_ws
           args: 
@@ -19,6 +19,7 @@ services:
           - $HOME/.Xauthority:/root/.Xauthority:rw
           - ./simulator_ws/src:/root/simulator_ws/src
       command: sleep infinity
+
     rmf:
       image: sitb157/ros-rmf:humble 
       container_name: rmf
@@ -26,8 +27,8 @@ services:
       environment:
           #- "DISPLAY"
           #- "QT_X11_NO_MITSHM=1"
-          #
           - DISPLAY=${IP}:0.0
+      network_mode: host
       build:
           context: ./rmf_ws
           args: 
@@ -38,6 +39,7 @@ services:
           - $HOME/.Xauthority:/root/.Xauthority:rw
           - ./rmf_ws/src:/root/rmf_ws/src
       command: sleep infinity
+
     navigation:
       image: sitb157/ros-navigation:humble 
       container_name: navigation 
@@ -45,8 +47,8 @@ services:
       environment:
           #- "DISPLAY"
           #- "QT_X11_NO_MITSHM=1"
-          #
           - DISPLAY=${IP}:0.0
+      network_mode: host
       build:
           context: ./navigation_ws
           args: 
@@ -58,4 +60,22 @@ services:
           - ./navigation_ws/src:/root/navigation_ws/src
       command: sleep infinity
 
-
+# For visulization with web
+#    novnc:  
+#      image: theasp/novnc:latest
+#      restart: always
+#      env_file:
+#        - novnc.env
+#      ports:
+#        - "9000:8080"
+#      networks:
+#         x11:
+#            ipv4_address: ${IP}
+#networks:
+#    x11:
+#       ipam:
+#          driver: default
+#          config:
+#              - subnet: "172.18.0.0/16"
+#
+#
