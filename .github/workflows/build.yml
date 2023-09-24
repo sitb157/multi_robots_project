@@ -17,7 +17,7 @@ jobs:
     - name: build
       shell: bash
       run: |
-        cd simulation_ws/src
+        cd simulation_ws/src/rmf_demos
         ls -al
         cd ..
         source /opt/ros/humble/setup.bash
