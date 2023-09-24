@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_image: ['sitb157/rmf:humble']
+        docker_image: ['sitb157/ros-rmf:humble']
     container:
       image: ${{ matrix.docker_image }}
     steps:
