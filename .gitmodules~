@@ -1,0 +1,3 @@
+[submodule "rmf_ws/src/rmf_demos"]
+	path = rmf_ws/src/rmf_demos
+	url = https://github.com/sitb157/rmf_demos.git

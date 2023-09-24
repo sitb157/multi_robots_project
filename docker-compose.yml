@@ -2,7 +2,7 @@ version: '3'
 services:
     simulation:
         image: sitb157/rmf:humble 
-        container_name: rmf_humble_simulation
+        container_name: rmf
         privileged: true
         environment:
             #- "DISPLAY"
