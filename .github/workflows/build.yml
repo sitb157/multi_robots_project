@@ -17,7 +17,9 @@ jobs:
     - name: build
       shell: bash
       run: |
-        cd simulation_ws
+        cd simulation_ws/src
+        ls -al
+        cd ..
         source /opt/ros/humble/setup.bash
         export CXX=clang++
         export CX=clang
