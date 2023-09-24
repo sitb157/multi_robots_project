@@ -12,11 +12,13 @@ jobs:
         docker_image: ['sitb157/rmf-simulation:humble']
     container:
       image: ${{ matrix.docker_image }}
-    steps:
-    - uses: actions/checkout@v3
-    - name: create-ws
+    steps:   
+    - name: ls -al
       run: |
-        mkdir -p build_ws/
+        ls -al
+    - uses: actions/checkout@v3
+    - name: ls -al
+      run: |
         ls -al
     - name: build
       shell: bash
