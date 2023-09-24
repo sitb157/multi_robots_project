@@ -12,18 +12,12 @@ jobs:
         docker_image: ['sitb157/rmf-simulation:humble']
     container:
       image: ${{ matrix.docker_image }}
-    steps:   
-    - name: ls -al
-      run: |
-        ls -al
+    steps:
     - uses: actions/checkout@v3
-    - name: ls -al
-      run: |
-        ls -al
     - name: build
       shell: bash
       run: |
-        cd build_ws
+        cd simulation_ws
         source /opt/ros/humble/setup.bash
         export CXX=clang++
         export CX=clang
