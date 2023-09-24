@@ -13,13 +13,11 @@ jobs:
     container:
       image: ${{ matrix.docker_image }}
     steps:
+    - uses: actions/checkout@v3
     - name: create-ws
       run: |
         mkdir -p build_ws/
-    - name: checkout # This will check out the current rmf_demos branch for build tests
-      uses: actions/checkout@v2
-      with:
-        path: simulation_ws/src/
+        ls -al
     - name: build
       shell: bash
       run: |
