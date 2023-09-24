@@ -28,6 +28,6 @@ RUN rosdep update
 RUN colcon mixin update default
 RUN apt-get update && apt install -y ros-${ROS_DISTRO}-rmf-dev
 
-WORKDIR /root/simulation_ws/
+WORKDIR /root/rmf_ws/
 
 RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
