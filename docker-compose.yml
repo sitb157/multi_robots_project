@@ -1,22 +1,61 @@
 version: '3'
 services:
-    simulation:
-        image: sitb157/rmf:humble 
-        container_name: rmf
-        privileged: true
-        environment:
-            #- "DISPLAY"
-            #- "QT_X11_NO_MITSHM=1"
-            #
-            - DISPLAY=${IP}:0.0
-        build:
-            context: ./rmf_ws
-            args: 
-                - USER_NAME=${USER_NAME}
-        user: ${USER_NAME}
-        volumes:
-            - /tmp/.X11-unix:/tmp/.X11-unix:rw
-            - $HOME/.Xauthority:/root/.Xauthority:rw
-            - ./rmf_ws/src:/root/rmf_ws/src
-        command: sleep infinity
+    simulator:
+      image: sitb157/ros-simulator:humble 
+      container_name: simulator 
+      privileged: true
+      environment:
+          #- "DISPLAY"
+          #- "QT_X11_NO_MITSHM=1"
+          #
+          - DISPLAY=${IP}:0.0
+      build:
+          context: ./simulator_ws
+          args: 
+              - USER_NAME=${USER_NAME}
+      user: ${USER_NAME}
+      volumes:
+          - /tmp/.X11-unix:/tmp/.X11-unix:rw
+          - $HOME/.Xauthority:/root/.Xauthority:rw
+          - ./simulator_ws/src:/root/simulator_ws/src
+      command: sleep infinity
+    rmf:
+      image: sitb157/ros-rmf:humble 
+      container_name: rmf
+      privileged: true
+      environment:
+          #- "DISPLAY"
+          #- "QT_X11_NO_MITSHM=1"
+          #
+          - DISPLAY=${IP}:0.0
+      build:
+          context: ./rmf_ws
+          args: 
+              - USER_NAME=${USER_NAME}
+      user: ${USER_NAME}
+      volumes:
+          - /tmp/.X11-unix:/tmp/.X11-unix:rw
+          - $HOME/.Xauthority:/root/.Xauthority:rw
+          - ./rmf_ws/src:/root/rmf_ws/src
+      command: sleep infinity
+    navigation:
+      image: sitb157/ros-navigation:humble 
+      container_name: navigation 
+      privileged: true
+      environment:
+          #- "DISPLAY"
+          #- "QT_X11_NO_MITSHM=1"
+          #
+          - DISPLAY=${IP}:0.0
+      build:
+          context: ./navigation_ws
+          args: 
+              - USER_NAME=${USER_NAME}
+      user: ${USER_NAME}
+      volumes:
+          - /tmp/.X11-unix:/tmp/.X11-unix:rw
+          - $HOME/.Xauthority:/root/.Xauthority:rw
+          - ./navigation_ws/src:/root/navigation_ws/src
+      command: sleep infinity
+
 
