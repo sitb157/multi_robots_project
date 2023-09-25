@@ -61,21 +61,21 @@ services:
       command: sleep infinity
 
 # For visulization with web
-#    novnc:  
-#      image: theasp/novnc:latest
-#      restart: always
-#      env_file:
-#        - novnc.env
-#      ports:
-#        - "9000:8080"
-#      networks:
-#         x11:
-#            ipv4_address: ${IP}
-#networks:
-#    x11:
-#       ipam:
-#          driver: default
-#          config:
-#              - subnet: "172.18.0.0/16"
-#
-#
+    novnc:  
+      image: theasp/novnc:latest
+      restart: always
+      env_file:
+        - novnc.env
+      ports:
+        - "9000:8080"
+      networks:
+         x11:
+            ipv4_address: ${IP}
+networks:
+    x11:
+       ipam:
+          driver: default
+          config:
+              - subnet: "172.18.0.0/16"
+
+
