@@ -1,0 +1,9 @@
+[submodule "rmf_ws"]
+	path = rmf_ws
+	url = git@github.com:sitb157/rmf_ws.git
+[submodule "simulator_ws"]
+	path = simulator_ws
+	url = git@github.com:sitb157/simulator_ws.git
+[submodule "navigation_ws"]
+	path = navigation_ws
+	url = git@github.com:sitb157/navigation_ws.git
