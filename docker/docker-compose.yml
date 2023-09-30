@@ -1,8 +1,8 @@
 version: '3'
 services:
-    simulator:
-      image: sitb157/ros-simulator:humble 
-      container_name: simulator 
+    robots:
+      image: sitb157/ros-robots:humble 
+      container_name: robots 
       privileged: true
       environment:
           #- "DISPLAY"
@@ -10,14 +10,14 @@ services:
           - DISPLAY=${IP}:0.0
       network_mode: host
       build:
-          context: ./simulator_ws
+          context: ../robots_ws
           args: 
               - USER_NAME=${USER_NAME}
       user: ${USER_NAME}
       volumes:
           - /tmp/.X11-unix:/tmp/.X11-unix:rw
           - $HOME/.Xauthority:/root/.Xauthority:rw
-          - ./simulator_ws/src:/root/simulator_ws/src
+          - ../robots_ws/src:/root/robots_ws/src
       command: sleep infinity
 
     rmf:
@@ -30,14 +30,14 @@ services:
           - DISPLAY=${IP}:0.0
       network_mode: host
       build:
-          context: ./rmf_ws
+          context: ../rmf_ws
           args: 
               - USER_NAME=${USER_NAME}
       user: ${USER_NAME}
       volumes:
           - /tmp/.X11-unix:/tmp/.X11-unix:rw
           - $HOME/.Xauthority:/root/.Xauthority:rw
-          - ./rmf_ws/src:/root/rmf_ws/src
+            #- ../rmf_ws/src:/root/rmf_ws/src
       command: sleep infinity
 
     navigation:
@@ -50,14 +50,14 @@ services:
           - DISPLAY=${IP}:0.0
       network_mode: host
       build:
-          context: ./navigation_ws
+          context: ../navigation_ws
           args: 
               - USER_NAME=${USER_NAME}
       user: ${USER_NAME}
       volumes:
           - /tmp/.X11-unix:/tmp/.X11-unix:rw
           - $HOME/.Xauthority:/root/.Xauthority:rw
-          - ./navigation_ws/src:/root/navigation_ws/src
+          - ../navigation_ws/src:/root/navigation_ws/src
       command: sleep infinity
 
 # For visulization with web
