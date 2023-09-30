@@ -7,3 +7,6 @@
 [submodule "navigation_ws"]
 	path = navigation_ws
 	url = git@github.com:sitb157/navigation_ws.git
+[submodule "robots_ws"]
+	path = robots_ws
+	url = git@github.com:sitb157/robots_ws.git
