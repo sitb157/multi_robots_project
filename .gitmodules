@@ -10,3 +10,4 @@
 [submodule "robots_ws"]
 	path = robots_ws
 	url = git@github.com:sitb157/robots_ws.git
+    branch = devel
