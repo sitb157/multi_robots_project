@@ -12,7 +12,7 @@ services:
       build:
           context: ../robots_ws
           args: 
-              - USER_NAME=${USER_NAME}
+            - USER_NAME=${USER_NAME}
       user: ${USER_NAME}
       volumes:
           - /tmp/.X11-unix:/tmp/.X11-unix:rw
@@ -32,7 +32,7 @@ services:
       build:
           context: ../rmf_ws
           args: 
-              - USER_NAME=${USER_NAME}
+            - USER_NAME=${USER_NAME}
       user: ${USER_NAME}
       volumes:
           - /tmp/.X11-unix:/tmp/.X11-unix:rw
@@ -52,7 +52,7 @@ services:
       build:
           context: ../navigation_ws
           args: 
-              - USER_NAME=${USER_NAME}
+            - USER_NAME=${USER_NAME}
       user: ${USER_NAME}
       volumes:
           - /tmp/.X11-unix:/tmp/.X11-unix:rw
